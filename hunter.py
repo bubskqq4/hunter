@@ -248,7 +248,7 @@ def mac_address_lookup():
     try:
         import scapy.all as scapy
         arp = scapy.ARP(pdst=ip)
-        ether = scapy.Ether(dst="ff:ff:ff:ff:ff:ff")
+        ether = scapy.Ether(dst="fflasff-ff-ff-ff-ff-ff")
         packet = ether/arp
         result = scapy.srp(packet, timeout=3, verbose=0)[0]
         for sent, received in result:
@@ -624,14 +624,14 @@ def help_menu():
     5. Reverse IP               - Lookup domains on IP (mocked)
     6. DNS Lookup               - Query DNS records
     7. Traceroute               - Trace packet route to target
-    8. WHOIS                 - Fetch domain registration data
-    9. Extended Port Scan      - Scan ports 1-1000
+    8. WHOIS                    - Fetch domain registration data
+    9. Extended Port Scan       - Scan ports 1-1000
     10. Packet Sniffer          - Capture network packets (scapy)
     11. ARP Spoof Detector      - Detect ARP spoofing attacks
     12. MAC Address Lookup      - Find MAC address for IP (scapy)
     13. Bandwidth Monitor       - Track network usage
-    14. SSL Certificate Check   - Verify SSL certificate details
-    15. DNS Enumeration        - Enumerate DNS records (A, MX, etc.)
+    14. SSL Certificate         - Verify SSL certificate details
+    15. DNS Enumeration         - Enumerate DNS records (A, MX, etc.)
     16. Network Interfaces      - List network adapters
     17. File Integrity          - Compute SHA256 hash of file
     18. Vulnerability Scan      - Basic vuln check (mock)
@@ -647,22 +647,22 @@ def help_menu():
     28. DNS Zone Transfer       - Attempt DNS zone transfer
     29. Network Latency         - Measure latency to target
     30. Protocol Analyzer       - Analyze protocols (mock)
-    31. Log File Analyzer           - Review recent logs
+    31. Log File Analyzer       - Review recent logs
     32. Session Sign-Up         - Register new user
     33. Ethical Dilemma         - Analyze ethical concerns
     34. Decision Framework      - Evaluate actions ethically
-    35. Principles Manager     - Manage ethical principles
+    35. Principles Manager      - Manage ethical principles
     36. Compliance Check        - Verify compliance (GDPR, etc.)
     37. Scenario Generator      - Create ethical scenarios
     38. Decision Tree           - Build decision trees
     39. Automated Backup        - Backup config files
     40. Multi-Language          - Translate interface
     41. Report Generator        - Create log reports
-    42. Exit                   - Disconnect from CLI
+    42. Exit                    - Disconnect from CLI
 
     Admin Tools:
     - Launch `dashboard.py` for admin controls
-    - URL: http://localhost:5000
+    - URL: http://localhost:8080
     - Features: Node management, DDoS whitelist, metrics, exclusive tools
     - Default: NETMASK@Ethan, KEYCODE@Admin
 
@@ -679,20 +679,20 @@ def menu(user_session):
 [NETWORK TOOLS]
 1. Ping Host                2. Port Scanner            3. Get IP
 4. HTTP Headers             5. Reverse IP              6. DNS Lookup
-7. Traceroute               8. WHOIS                    9. Extended Scan
-10. Packet Sniffer          11. ARP Spoofing        12. MAC Lookup
-13. Bandwidth Monitor       14. SSL Certificate      15. DNS Enumeration
-16. Network Interfaces      17. File Integrity       18. Vulnerability Scanner
-19. Packet Injection        20. Password Check       21. Traffic Analysis
-22. Firewall Rules          23. OS Fingerprint       24. Banner Grab
-25. Subnet Calculator       26. GeoIP Lookup        27. HTTP Methods
-28. DNS Zone Transfer      29. Latency Test      30. Protocol Analysis
+7. Traceroute               8. WHOIS                   9. Extended Scan
+10. Packet Sniffer          11. ARP Spoofing           12. MAC Lookup
+13. Bandwidth Monitor       14. SSL Certificate        15. DNS Enumeration
+16. Network Interfaces      17. File Integrity         18. Vulnerability Scanner
+19. Packet Injection        20. Password Check         21. Traffic Analysis
+22. Firewall Rules          23. OS Fingerprint         24. Banner Grab
+25. Subnet Calculator       26. GeoIP Lookup           27. HTTP Methods
+28. DNS Zone Transfer       29. Latency Test           30. Protocol Analysis
 31. Log Analyzer
 [ETHICAL TOOLS]
-33. Ethical Dilemma         34. Decision Framework    35. Principles
-36. Compliance             37. Scenarios            38. Decision Tree
+33. Ethical Dilemma         34. Decision Framework     35. Principles
+36. Compliance              37. Scenarios              38. Decision Tree
 [UTILITY TOOLS]
-32. User Sign-Up          39. Auto Backup           40. Multi-Language
+32. User Sign-Up            39. Auto Backup            40. Multi-Language
 41. Report Generator
 [CONTROL]
 42. Disconnect              h. Grid Index
@@ -765,13 +765,12 @@ def menu(user_session):
         elif choice == "33":
             ethical_dilemma_analyzer()
         elif choice == "34":
-            decision_making()
-            framework()
+            decision_making_framework()
         elif choice == "35":
             principles_manager()
         elif choice == "36":
             compliance_checker()
-        elif choice == "37':
+        elif choice == "37":
             scenario_generator()
         elif choice == "38":
             decision_tree_builder()
@@ -785,7 +784,7 @@ def menu(user_session):
             print(Fore.RED + "[!] Disconnecting from NEON GRID..." + Style.RESET_ALL)
             log_event(f"{user_session['role'].capitalize()} {user_session['username']} disconnected")
             break
-        elif choice in ["h", "n"]:
+        elif choice in ["h", "help"]:
             help_menu()
         else:
             print(Fore.RED + "[!] Invalid command. Check grid index (h)." + Style.RESET_ALL)
